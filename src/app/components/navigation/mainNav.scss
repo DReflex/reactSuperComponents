@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 .nav{
-  position: absolute;
+  position: fixed;
   z-index: 1000;
   display: flex;
   margin:auto;
@@ -11,6 +11,11 @@
   color: rgba(255,255,255,0.8);
   font-family: 'Open Sans',sans-serif;
   text-transform: uppercase;
+  transition: all 1s;
+}
+.isScrolling{
+  height:60px;
+  background-color: rgb(20, 26, 62);
 }
 .brand{
  font-size:18px;
@@ -18,25 +23,113 @@
  margin:auto;
  margin-left: 20px;
  height: 50px;
- padding: 15px 15px;
 
 }
 .brand h2{
+  margin:auto;
+  padding:10px;
   transition: all .5s
 
 }
+//nav links
 .nameItems{
-  width: auto;
+  position: absolute;
   margin:auto;
-  margin-right: 20px;
-  justify-content: space-around;
+  right: 0;
+  min-width:200px;
+  height:400px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  transform:translateX(400px);
+  transition:all .5s;
 }
+
 .nameItems a{
   padding:0 15px;
   transition: all .5s;
   text-decoration: none;
   color: rgba(255,255,255,0.8);
+
+}
+// dropdown
+.dropdown i{
+  color: inherit !important;
+}
+.dropdown-content{
+  position: absolute;
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  display: none;
+  a{
+    padding:5px 0px;
+    text-align: center;
+  }
+}
+//burger css
+
+
+.big-mac{
+  position: relative;
+  right:20px;
+  margin:auto;
+  margin-right: 20px;
+}
+.big-mac input{
+  position: absolute;
+  width:40px;
+  height:100%;
+  z-index: +12;
+  margin:auto;
+  opacity:0;
+  cursor: pointer;
+}
+.big-mac span{
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  background: #ededed;
+  border-radius: 3px;
+  z-index: +11;
+  transform-origin: 4px 0px;
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+.big-mac span:first-child
+{
+  transform-origin: 50% 50%;
+}
+
+.big-mac span:nth-last-child(2)
+{
+  transform-origin: 50% 50%;
+}
+.big-mac input:checked ~ span
+{
+  opacity: 1;
+  transform: rotate(-45deg) translate(0px, -1px);
+}
+
+/*
+ * But let's hide the middle one.
+ */
+.big-mac input:checked ~ span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+.big-mac input:checked ~ span:nth-last-child(2)
+{
+  transform: rotate(45deg) translate(-2px, -1px);
+}
+
+@media screen and (max-width: 720px) {
 
 }
