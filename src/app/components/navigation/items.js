@@ -3,7 +3,6 @@ import { handleClickScroll } from './functions/handleScroll'
 
 function Items(props){
   const height = window.innerHeight
-  console.log(height);
   const linkNames = props.linkNames;
   const listItems = linkNames.map((item, num) =>{
     let id = "nav-"+ item
@@ -12,7 +11,7 @@ function Items(props){
         <a id={id} key={num}
           onMouseOver={(e) => props.handleHover(e)}
           onMouseLeave={(e) => props.handleLeave(e)}
-          onClick = {(e) => handleClickScroll(e, item)}
+          onClick = {(e) => handleClickScroll(e, item, props.stateFunction())}
           >
           {item}
         </a>
@@ -41,6 +40,8 @@ function Dropdown (props) {
     e.preventDefault()
     const id = document.getElementById("myDropdown");
     (id.style.display === "none")? id.style.display= "flex" : id.style.display="none"
+    id.childNodes.forEach((ele) => ele.classList.add("animationSlideIn"))
+
   }
   const listItems = props.linkNames.map((item, num)=>
       <a

@@ -37,11 +37,13 @@ export default Standout
 const navigationElements={
   //links are important to have no default specified
   links:{
-    names:["about", "service", "portfolio", "testimonials", "home",
+    names:["about", "service", "portfolio", "testimonials",
     {
       title: "dropdown",
       names: ["hello", "world"]
     },
+     "home",
+
   ],
     styles:{
       color:"rgba(255,255,255,0.8)",

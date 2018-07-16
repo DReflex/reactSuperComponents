@@ -17,6 +17,9 @@ class Nav extends React.Component{
   componentDidMount(){
     this.handleScroll()
     document.addEventListener("scroll", this.handleScroll)
+    this.setState({
+      listLinks: false,
+    });
   }
   componentWillUnmount(){
     document.removeEventListener('scroll', this.handleScroll)
@@ -26,6 +29,7 @@ class Nav extends React.Component{
     let dropdown = document.getElementById("myDropdown");
     let linkList = document.getElementById("navLinks");
     let scroll =window.pageYOffset;
+
     if(scroll > 0){
       dropdown.style.background = this.props.navigation.isScrolling
       id.style.background = this.props.navigation.isScrolling;
@@ -60,8 +64,22 @@ class Nav extends React.Component{
       listLinks: !this.state.listLinks,
     });
     const id = document.getElementById("navLinks");
-    (!this.state.listLinks)? (id.style.transform ="translateX(0)"):(id.style.transform ="translateX(400px)")
+    console.log(id.offsetWidth);
+    const bigMac = document.getElementById("bigMacId");
+
+    if(!this.state.listLinks){
+      id.style.transform =`translateX(0px)`
+      bigMac.checked = true;
+      id.childNodes.forEach((ele) => ele.classList.add("animationSlideIn"))
+
+    }else{
+      id.style.transform =`translateX(${id.offsetWidth}px)`
+      bigMac.checked = false;
+      id.childNodes.forEach((ele) => ele.classList.remove("animationSlideIn"))
+
+    }
   }
+
 
 
   render(){
@@ -76,6 +94,7 @@ class Nav extends React.Component{
             handleHover={this.handleHover}
             handleLeave={this.handleLeave}
             listLinks ={this.state.listLinks}
+            stateFunction={this.handleBigMac}
             />
           <BigMac
             handleBigMac={this.handleBigMac}
@@ -90,7 +109,7 @@ export default Nav
 function BigMac (props){
   return(
   <div className="big-mac">
-    <input onClick={(e)=>props.handleBigMac(e)} type="checkbox" />
+    <input id="bigMacId" onClick={(e)=>props.handleBigMac(e)} type="checkbox" />
     <span></span>
     <span></span>
     <span></span>
