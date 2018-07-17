@@ -51,7 +51,11 @@ const navigationElements={
     }
   },
   //if none specified no show
-  brand:"standout",
+  brand:{
+    title:"standout",
+    fontFamily:"'Roboto Condensed', sans-serif",
+    logo:"http://emblemsbf.com/img/15633.jpg"
+  },
   //if none specified default is transparent as described by css
   background:"transparent",
   isScrolling:"#07003e",
