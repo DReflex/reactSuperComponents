@@ -98,6 +98,7 @@ class Nav extends React.Component{
             />
           <BigMac
             handleBigMac={this.handleBigMac}
+            mack={this.props.navigation.royale}
             />
       </div>
     )
@@ -108,11 +109,26 @@ export default Nav
 
 function BigMac (props){
   return(
-  <div className="big-mac">
-    <input id="bigMacId" onClick={(e)=>props.handleBigMac(e)} type="checkbox" />
-    <span></span>
-    <span></span>
-    <span></span>
+    <div className="big-mac-container">
+      {
+        (props.mack.style)?
+        (
+          <div className="nugget">
+            <input id="bigMacId" onClick={(e)=>props.handleBigMac(e)} type="checkbox" />
+            <span></span>
+            <span></span>
+          </div>
+        ):(
+
+        <div className="big-mac">
+          <input id="bigMacId" onClick={(e)=>props.handleBigMac(e)} type="checkbox" />
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      )
+    }
+    <h2>{props.mack.title}</h2>
   </div>
   );
 }
