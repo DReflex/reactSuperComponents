@@ -54,7 +54,6 @@ const navigationElements={
   brand:{
     title:"standout",
     fontFamily:"'Roboto Condensed', sans-serif",
-    logo:"http://emblemsbf.com/img/15633.jpg"
   },
   //royale is inportant as an empty object
   royale:{

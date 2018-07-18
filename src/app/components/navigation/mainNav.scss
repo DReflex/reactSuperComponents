@@ -130,22 +130,19 @@
   transform: rotate(-45deg) translate(0px, -1px);
 }
 
-/*
- * But let's hide the middle one.
- */
+
 .big-mac input:checked ~ span:nth-last-child(3)
 {
   opacity: 0;
   transform: rotate(0deg) scale(0.2, 0.2);
 }
 
-/*
- * Ohyeah and the last one should go the other direction
- */
 .big-mac input:checked ~ span:nth-last-child(2)
 {
   transform: rotate(45deg) translate(-2px, -1px);
 }
+
+
 //adding different option for burger menu
 .nugget{
   position: relative;
@@ -193,17 +190,16 @@
 }
 
 
-/*
- * Ohyeah and the last one should go the other direction
- */
 .nugget input:checked ~ span:nth-last-child(1)
 {
   transform: rotate(45deg) translate(-3px, -3px);
 }
+////////////////////////////////////////////////
 
 .animationSlideIn{
   animation: slideIn 1s ease both;
 }
+
 @keyframes slideIn {
   0%{
     opacity: 0;
@@ -214,6 +210,7 @@
     transform: translate(0px);
   }
 }
+
 @for $i from 1 to 10 {
   .nameItems *:nth-child(#{$i}) {
     animation-delay: $i * .1s;

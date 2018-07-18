@@ -64,18 +64,18 @@ class Nav extends React.Component{
       listLinks: !this.state.listLinks,
     });
     const id = document.getElementById("navLinks");
-    console.log(id.offsetWidth);
     const bigMac = document.getElementById("bigMacId");
-
     if(!this.state.listLinks){
       id.style.transform =`translateX(0px)`
       bigMac.checked = true;
       id.childNodes.forEach((ele) => ele.classList.add("animationSlideIn"))
+      id.style.height = `${window.innerHeight}px`;
 
     }else{
       id.style.transform =`translateX(${id.offsetWidth}px)`
       bigMac.checked = false;
       id.childNodes.forEach((ele) => ele.classList.remove("animationSlideIn"))
+      id.style.height = "0px";
 
     }
   }
