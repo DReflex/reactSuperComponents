@@ -3,6 +3,7 @@
   height:800px;
   text-align: center;
 }
+
 .welcome{
   background:url(https://images.unsplash.com/photo-1501004745788-4f4cb08ba8bc?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=efb4245a7026676fbed5280a27faa597&auto=format&fit=crop&w=1350&q=80);
   background-repeat: no-repeat;
@@ -17,4 +18,10 @@
   z-index: 1;
   width: 100%;
   background: rgba(0, 0, 0, 0.3);
+}
+.stepOneAnimation{
+  transform:translate3d(0,0,0);
+}
+.stepTwoAnimation{
+  transform:translate3d(2000px,0,0);
 }

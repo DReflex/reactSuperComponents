@@ -14,7 +14,7 @@ class ScrollPage extends React.Component{
 
         <div id="about" className="about dummy">
           <h1>Welcome</h1>
-          <ScrollSlider />
+          <ScrollSlider slider={slider} />
         </div>
 
         <div id="service" className="service dummy">
@@ -33,3 +33,19 @@ class ScrollPage extends React.Component{
   }
 }
 export default ScrollPage
+const slider = {
+  items:[
+    {
+      title:"hello",
+    },
+    {
+      title:"lorem",
+    },
+    {
+      title:"ipsum",
+    },
+    {
+      title:"alea",
+    },
+  ]
+}
