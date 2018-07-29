@@ -35,6 +35,9 @@ module.exports = {
     historyApiFallback: true,
     },
     plugins: [
-      new HtmlWebpackPlugin()
+      new HtmlWebpackPlugin({
+        title:"SuperComponents",
+        template:"./public/index.html"
+      })
     ],
 }
