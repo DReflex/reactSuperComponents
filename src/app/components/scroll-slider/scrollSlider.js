@@ -1,5 +1,8 @@
 import React from 'react';
 import smoothscroll from 'smoothscroll-polyfill';
+import { checkElement, getChild } from "./functions";
+import SubComponent from './subComponent';
+import SliderNavigation from './sliderNavigation';
 import './scrollSlider.scss'
 class ScrollSlider extends React.Component{
   constructor(props){
@@ -24,7 +27,6 @@ class ScrollSlider extends React.Component{
     this.setState({
       items: items,
     })
-    console.log(sliderItems);
   }
   componentWillUnmount(){
     document.removeEventListener("scroll", this.handleScroll)
@@ -82,82 +84,3 @@ class ScrollSlider extends React.Component{
 }
 export default ScrollSlider
 //
-function getChild(){
-  const element = document.getElementById("about");
-  const current_scroll_position = window.scrollY - element.offsetTop;
-
-  const id = document.getElementById("componentContainer")
-  const child_nodes = id.childNodes
-  for (let i = 1; i < child_nodes.length +1; i++) {
-    if(current_scroll_position <= window.innerHeight * i){
-      return {
-        id:child_nodes[i -1].id,
-        num: i -1
-      }
-
-    }
-    else{
-      child_nodes[i-1].style.transform = "translate3d(100%, 0,0)"
-    }
-
-  }
-
-}
-function checkElement(id){
-  const window_top_position = window.pageYOffset;
-  let element = document.getElementById("about");
-  let slider = document.getElementById(id)
-  if(element){
-
-    let elem_height = element.offsetHeight;
-    let elem_top = element.offsetTop;
-    let elem_bottom = elem_top + elem_height;
-    if((elem_bottom >= window_top_position) && (elem_top <= window_top_position)){
-      slider.style.position = "fixed"
-      return true
-    }else{
-      slider.style.position= "relative"
-      return false
-    }
-  }
-}
-function SubComponent (props){
-
-  return(
-    <div id={props.id} style={props.style} className="subComponent">
-      <h1>{props.text}</h1>
-
-    </div>
-  )
-}
-function SliderNavigation (props){
-  const LEN = props.items
-  const handleClick = (num) =>{
-    const element = document.getElementById("about");
-    let scrollValue= element.offsetTop + 50 + (num * window.innerHeight);
-    window.scroll({ top: scrollValue, left: 0, behavior: 'smooth' });
-
-
-  }
-  const SliderComponent = (num) =>{
-    const SCRR = (num) =>{
-
-    }
-    return(
-      <div className="slider-component">
-        <div onClick={() => (!isNaN(num.num))? handleClick(num.num):console.log(0)} className="circle"></div>
-        <div className="line"></div>
-      </div>
-    )
-  }
-  return(
-    <div>
-      <div className="slider-outliner">
-        {LEN.map((item, num) => <SliderComponent key={num} num={num} />)}
-        <div id="controller" className="slider-controller">
-          <SliderComponent />
-        </div>
-      </div>
-    </div>
-  )
-}
